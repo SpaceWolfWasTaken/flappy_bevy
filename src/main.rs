@@ -1,4 +1,6 @@
 use bevy::prelude::*;
+mod player;
+mod camera;
 fn main() {
     App::new()
     .add_plugins(DefaultPlugins.set(WindowPlugin{
@@ -10,14 +12,14 @@ fn main() {
         }),
         ..default()
     }))
+    .add_plugins(player::PlayerPlugin)
+    .add_plugins(camera::CameraPlugin)
     .add_systems(Startup, setup)
     .run();
     
 }
 
 fn setup(
-    mut commands: Commands
-){
-    commands.spawn(Camera2dBundle::default());
+){    
     println!("Hello, world!");
 }
